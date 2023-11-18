@@ -1,12 +1,20 @@
 import pinecone
-api_key="aca4b14d-7412-4d01-81d9-fdb18d197b3e"
-environment="asia-southeast1-gcp"
+import configparser
+
+# 创建配置解析器
+config = configparser.ConfigParser()
+
+# 读取配置文件
+config.read('./config/config.ini')
+api_key = config['pinecone']['api_key']
+environment = config['pinecone']['environment']
 
 def init_vecDB(api_key, environment):
     pinecone.init(api_key, environment)
 
 if __name__ == "__main__":
     pinecone.init(api_key, environment="asia-southeast1-gcp")
+    pinecone.delete_index("quickstart")
     pinecone.create_index("quickstart", dimension=8, metric="euclidean")
     pinecone.describe_index("quickstart")
     index = pinecone.Index("quickstart")

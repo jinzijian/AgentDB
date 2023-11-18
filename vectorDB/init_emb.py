@@ -1,14 +1,23 @@
 import langchain
 from langchain.embeddings import OpenAIEmbeddings
-key = "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"
-embeddings_model = OpenAIEmbeddings(openai_api_key=key)
+import configparser
+
+# 创建配置解析器
+config = configparser.ConfigParser()
+
+# 读取配置文件
+config.read('./config/config.ini')
+
+# 获取OpenAI API密钥
+api_key = config['openai']['api_key']
+embeddings_model = OpenAIEmbeddings(openai_api_key=api_key)
 
 # Todo: 支持多种Embedding; OpenAI; Bge-En; Bge-ZH
 def get_embeddings_model(api_key):
     embeddings_model = OpenAIEmbeddings(openai_api_key=api_key)
     return embeddings_model
 if __name__=="__main__":
-    emb_model = get_embeddings_model(key)
+    emb_model = get_embeddings_model(api_key)
     embeddings = emb_model.embed_documents(
     [
         "Hi there!",
