@@ -3,6 +3,7 @@ from langchain.embeddings import OpenAIEmbeddings
 key = "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"
 embeddings_model = OpenAIEmbeddings(openai_api_key=key)
 
+# Todo: 支持多种Embedding; OpenAI; Bge-En; Bge-ZH
 def get_embeddings_model(api_key):
     embeddings_model = OpenAIEmbeddings(openai_api_key=api_key)
     return embeddings_model

@@ -7,7 +7,7 @@ def init_vecDB(api_key, environment):
 
 if __name__ == "__main__":
     pinecone.init(api_key, environment="asia-southeast1-gcp")
-    # pinecone.create_index("quickstart", dimension=8, metric="euclidean")
+    pinecone.create_index("quickstart", dimension=8, metric="euclidean")
     pinecone.describe_index("quickstart")
     index = pinecone.Index("quickstart")
 
