@@ -1,4 +1,4 @@
-from LLMs.gpt import call_gpt4
+from llms.gpt import call_gpt4
 import pinecone
 import configparser
 import langchain
