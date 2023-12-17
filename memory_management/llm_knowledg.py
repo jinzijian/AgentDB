@@ -40,6 +40,6 @@ def save_task(config, task, db, index):
     for old_task in old_tasks:
         action = get_action(config, old_task, new_task=task)
         result = operations.get(action, lambda: "无效操作")()
-    return
+    return result
         
 
