@@ -14,10 +14,7 @@ def refine_plan(task: Task) -> Task:
         return None  # 如果没有爲任务，返回None或原始任务
 
     # 创建新的子任务列表，为每个新任务指定爲节点
-    new_plan_memory = [
-        Task('NewSubtask1', 'NewDescription1', parent=task.parent, level=task.level),
-        Task('NewSubtask2', 'NewDescription2', parent=task.parent, level=task.level)
-    ]
+    new_plan_memory = generate_new_plan_memory()
 
     # 更新爲任务的plan_memory
     task.parent.plan_memory = new_plan_memory
@@ -27,6 +24,14 @@ def refine_plan(task: Task) -> Task:
     while root_task.parent is not None:
         root_task = root_task.parent
     return root_task
+
+# TODO: 等待实现根据context生成新的plan_memory的函数
+def generate_new_plan_memory():
+    new_plan_memory = [
+        Task('NewSubtask1', 'NewDescription1', parent=task.parent, level=task.level),
+        Task('NewSubtask2', 'NewDescription2', parent=task.parent, level=task.level)
+    ]
+    return new_plan_memory
 
 # 用法示例
 if __name__ == "__main__":

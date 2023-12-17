@@ -13,7 +13,8 @@ api_key = config['openai']['api_key']
 embeddings_model = OpenAIEmbeddings(openai_api_key=api_key)
 
 # Todo: 支持多种Embedding; OpenAI; Bge-En; Bge-ZH
-def get_embeddings_model(api_key):
+def get_embeddings_model(config):
+    api_key = config['openai']['api_key']
     embeddings_model = OpenAIEmbeddings(openai_api_key=api_key)
     return embeddings_model
 if __name__=="__main__":

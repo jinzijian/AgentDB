@@ -33,4 +33,3 @@ if __name__ == "__main__":
     top_k=3,
     include_values=True
     ))
-    pinecone.delete_index("quickstart")
